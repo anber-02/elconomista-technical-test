@@ -68,7 +68,7 @@ class FormController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Form created successfully');
+        return redirect()->back()->with('success', 'Formulario creado correctamente');
     }
 
     /**

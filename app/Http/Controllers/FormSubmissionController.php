@@ -40,7 +40,7 @@ class FormSubmissionController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Form created successfully');
+        return redirect()->back()->with('success', 'Formulario enviado correctamente');
     }
 
     public function submissions(Form $form)
