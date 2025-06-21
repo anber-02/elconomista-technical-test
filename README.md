@@ -10,7 +10,12 @@ Proyecto técnico basado en Laravel 10, con Filament, Inertia.js y React, que pe
 - **PHP** `>= 8.1`
 - **Laravel** `v10.0+`
 - **Node.js** (recomendado >= v20.x)
-
+> ⚠️ **Nota importante:** Verificar que la extensión PHP `intl` esté habilitada.  
+> Si no la tienes habilitada, edita tu archivo `php.ini` y descomenta (o agrega) la línea:  
+> ```ini
+> extension=intl
+> ```  
+> Luego reinicia tu servidor web o PHP para que los cambios tengan efecto.
 ---
 
 ## 🚀 Instalación
