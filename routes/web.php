@@ -17,7 +17,6 @@ Route::get('/', function () {
 // Ruta para los archivos
 Route::get('/files/{path}', function ($path) {
     $filePath = '/' . $path;
-    // dd($filePath);
     if (!Storage::exists($filePath)) {
         abort(404);
     }

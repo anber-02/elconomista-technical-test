@@ -7,7 +7,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { type Form } from '@/types/Form';
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreateForm from './forms/create';
 import ShowForm from './forms/show';
 
@@ -36,13 +36,24 @@ interface Props {
 }
 
 export default function Dashboard({ forms }: Props) {
-    // console.log(forms);
-    const { props } = usePage();
-    const [successMessage, setSuccessMessage] = useState<string | null>(props.flash.success || null);
+    const { flash } = usePage().props;
+    const [successMessage, setSuccessMessage] = useState<string>(flash.success || '');
     const { setState, state } = useModalContext();
     const isMobile = useIsMobile();
     const [form, setSelectedForm] = useState<Form | null>(null);
     const [modal, setModal] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (flash.success) {
+            setSuccessMessage(flash.success);
+
+            const timeout = setTimeout(() => {
+                setSuccessMessage('');
+            }, 4000); // 4 segundos
+
+            return () => clearTimeout(timeout);
+        }
+    }, [flash.success]);
 
     const openModal = (form: Form) => {
         setSelectedForm(form);
@@ -87,11 +98,11 @@ export default function Dashboard({ forms }: Props) {
                         ) : (
                             <ul className="space-y-2">
                                 {forms.data.map((form) => (
-                                    <li key={form.id} className="flex items-center justify-between rounded border px-4 py-2">
+                                    <li key={form.id} className="flex flex-col justify-between rounded border px-4 py-2 lg:flex-row lg:items-center">
                                         <Button
                                             variant={'ghost'}
                                             onClick={() => openModal(form)}
-                                            className="flex cursor-pointer items-center justify-between rounded px-4 py-2"
+                                            className="flex cursor-pointer items-center justify-between rounded px-0 py-2"
                                         >
                                             <h2 className="text-lg font-semibold capitalize">{form.title}</h2>
                                             <p className="text-sm text-gray-500">Creado el: {new Date(form.created_at).toLocaleDateString()}</p>

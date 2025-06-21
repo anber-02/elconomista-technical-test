@@ -40,8 +40,7 @@ class FormSubmissionController extends Controller
             }
         }
 
-        return redirect()->route('dashboard')
-            ->with('success', 'Form submitted successfully!');
+        return redirect()->back()->with('success', 'Form created successfully');
     }
 
     public function submissions(Form $form)

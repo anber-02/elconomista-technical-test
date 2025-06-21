@@ -32,7 +32,7 @@ export default function FormSubmissions({ form }: Props) {
                     <p className="text-gray-500">Las respuestas del formulario aparecerán aquí una vez que los usuarios empiecen a enviarlo.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-2 gap-4">
                     {form.submissions.map((submission, index) => (
                         <div
                             key={index}
