@@ -24,6 +24,8 @@ composer install
 cp .env.example .env
 ```
 
+> ⚠️ **Nota:** Si el comando `cp` no funciona en tu sistema, copia manualmente el contenido de `.env.example` a un nuevo archivo llamado `.env`.
+
 ### 📦 Base de datos
 
 Por defecto se usa **SQLite**.
@@ -52,7 +54,7 @@ npm install
 
 ---
 
-## 🔧 Compilación frontend (Vite)
+## 🔧 Compilación
 
 ### Opción 1 – Desarrollo (live reload):
 ```bash
@@ -86,8 +88,7 @@ php artisan serve
   - Select
 - Al crear un formulario, aparece en el **Dashboard**.
 - Haciendo clic en el formulario, puede rellenar los campos definidos.
-- Al enviar el formulario:
-  - Puede ver un enlace llamado **"Ver respuestas"** para revisar los datos enviados.
+- Puede ver un enlace llamado **"Ver respuestas"** para revisar los datos enviados.
 
 ---
 
